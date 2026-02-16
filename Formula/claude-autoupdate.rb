@@ -4,24 +4,24 @@
 class ClaudeAutoupdate < Formula
   desc "Automatic updates for claude-code Homebrew installations"
   homepage "https://github.com/dlgochan/claude-code-autoupdate"
-  url "https://github.com/dlgochan/claude-code-autoupdate.git",
-      branch: "main"
-  version "1.0.0"
+  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "8f53be3e1e808915c349a3f12055f5feca4cd8f82cbff5814c42bbdf2f49c5bc"
   license "MIT"
 
-  depends_on "ruby" => :build
   depends_on macos: :catalina
 
   def install
     # Install library files
-    lib.install Dir["lib/*"]
+    libexec.install "lib"
 
-    # Install command
-    (bin/"claude-autoupdate").write_env_script(
-      "#{Formula["ruby"].opt_bin}/ruby",
-      "#{libexec}/cmd/claude-autoupdate.rb",
-      RUBYLIB: ENV["RUBYLIB"] ? "#{lib}:#{ENV["RUBYLIB"]}" : lib.to_s
-    )
+    # Install command with proper load path
+    (bin/"claude-autoupdate").write <<~RUBY
+      #!/usr/bin/env ruby
+      # frozen_string_literal: true
+
+      $LOAD_PATH.unshift("#{libexec}/lib")
+      load "#{libexec}/cmd/claude-autoupdate.rb"
+    RUBY
 
     # Copy command file to libexec
     libexec.install "cmd"
