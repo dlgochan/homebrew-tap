@@ -20,7 +20,8 @@ class ClaudeAutoupdate < Formula
       # frozen_string_literal: true
 
       $LOAD_PATH.unshift("#{libexec}/lib")
-      load "#{libexec}/cmd/claude-autoupdate.rb"
+      require "#{libexec}/cmd/claude-autoupdate"
+      Homebrew::Cmd::ClaudeAutoupdate.run
     RUBY
 
     # Copy command file to libexec
