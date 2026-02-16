@@ -4,8 +4,8 @@
 class ClaudeAutoupdate < Formula
   desc "Automatic updates for claude-code Homebrew installations"
   homepage "https://github.com/dlgochan/claude-code-autoupdate"
-  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "8f53be3e1e808915c349a3f12055f5feca4cd8f82cbff5814c42bbdf2f49c5bc"
+  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "2c3a6b2053df607e4fbe721ad6a2f410e902fa0820814fee6acba00b1d893054"
   license "MIT"
 
   depends_on macos: :catalina
@@ -20,8 +20,7 @@ class ClaudeAutoupdate < Formula
       # frozen_string_literal: true
 
       $LOAD_PATH.unshift("#{libexec}/lib")
-      require "#{libexec}/cmd/claude-autoupdate"
-      Homebrew::Cmd::ClaudeAutoupdate.run
+      load "#{libexec}/cmd/claude-autoupdate.rb"
     RUBY
 
     # Copy command file to libexec
