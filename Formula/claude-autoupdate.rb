@@ -4,8 +4,8 @@
 class ClaudeAutoupdate < Formula
   desc "Automatic updates for claude-code Homebrew installations"
   homepage "https://github.com/dlgochan/claude-code-autoupdate"
-  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "756c1cd66cd74b75708135a156558ad48b9fddbf115d958e6baa7a440796133a"
+  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.1.1.tar.gz"
+  sha256 "f2437c2db6a860b6ec6325d680e3614473314e0778c58a311fd9dcacc6242609"
   license "MIT"
 
   depends_on macos: :catalina
