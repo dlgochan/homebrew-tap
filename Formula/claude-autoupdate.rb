@@ -4,8 +4,8 @@
 class ClaudeAutoupdate < Formula
   desc "Automatic updates for claude-code Homebrew installations"
   homepage "https://github.com/dlgochan/claude-code-autoupdate"
-  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "f2437c2db6a860b6ec6325d680e3614473314e0778c58a311fd9dcacc6242609"
+  url "https://github.com/dlgochan/claude-code-autoupdate/archive/refs/tags/v1.2.0.tar.gz"
+  sha256 "8ff3fd5f2f7911541482bebc55402b561d3ae6194d0a2f798cd1582d5c7163bb"
   license "MIT"
 
   depends_on macos: :catalina
@@ -30,14 +30,17 @@ class ClaudeAutoupdate < Formula
   def caveats
     <<~EOS
       Enable auto-updates for claude-code:
-        claude-autoupdate enable
+        claude-autoupdate enable              # Default 24h
+        claude-autoupdate enable -i 12h       # Every 12 hours
+        claude-autoupdate enable -i 6h        # Every 6 hours
 
       This tool is only for Homebrew installations of claude-code.
       Native installations already have built-in auto-updates.
 
       Commands:
-        claude-autoupdate enable     # Enable auto-updates
+        claude-autoupdate enable     # Enable auto-updates (24h default)
         claude-autoupdate status     # Check status
+        claude-autoupdate config     # View configuration
         claude-autoupdate update     # Update now
         claude-autoupdate disable    # Disable
     EOS
